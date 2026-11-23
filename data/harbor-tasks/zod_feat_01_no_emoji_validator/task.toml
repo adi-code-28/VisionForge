@@ -1,0 +1,25 @@
+schema_version = "1.0"
+
+[task]
+name = "zod/no-emoji-string-validator"
+keywords = ["coding", "software-engineering", "typescript", "validation", "feature-development"]
+
+[metadata]
+difficulty = "medium"
+category = "api_backend"
+starting_version = "v3.22.4"
+base_commit = "a7c3f8e"
+title = "Add noEmoji() String Validator to Zod"
+
+[verifier]
+timeout_sec = 90.0
+environment_mode = "shared"
+
+[agent]
+timeout_sec = 300.0
+
+[environment]
+build_timeout_sec = 300.0
+cpus = 2
+memory = "2G"
+workdir = "/app"

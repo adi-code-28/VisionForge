@@ -1,0 +1,25 @@
+schema_version = "1.0"
+
+[task]
+name = "click/log-level-param-type"
+keywords = ["coding", "software-engineering", "python", "cli", "feature-development"]
+
+[metadata]
+difficulty = "medium"
+category = "cli_tooling"
+starting_version = "v8.1.7"
+base_commit = "9b9bfbd"
+title = "Add LogLevel Parameter Type to Click"
+
+[verifier]
+timeout_sec = 60.0
+environment_mode = "shared"
+
+[agent]
+timeout_sec = 300.0
+
+[environment]
+build_timeout_sec = 300.0
+cpus = 2
+memory = "2G"
+workdir = "/app"
