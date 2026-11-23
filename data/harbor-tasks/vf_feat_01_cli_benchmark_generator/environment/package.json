@@ -1,0 +1,11 @@
+{
+  "name": "visionforge",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Synthetic visual-reasoning benchmark factory with Harbor task export.",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test tests/*.test.js"
+  },
+  "engines": { "node": ">=20" }
+}

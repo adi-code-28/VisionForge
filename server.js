@@ -27,6 +27,20 @@ function safeStatic(url) {
 const server = http.createServer(async (req, res) => {
   try {
     if (req.method === 'GET' && req.url === '/api/tasks') return send(res, 200, { tasks });
+    if (req.method === 'GET' && req.url === '/api/strategy/features') {
+      const { FEATURE_TASKS } = require('./src/strategy/feature_task_strategy');
+      return send(res, 200, { features: FEATURE_TASKS });
+    }
+    if (req.method === 'GET' && req.url === '/api/strategy/evidence') {
+      const evidencePath = path.join(dataDir, 'validation_evidence_matrix.json');
+      const evidence = fs.existsSync(evidencePath) ? JSON.parse(fs.readFileSync(evidencePath, 'utf8')) : null;
+      return send(res, 200, { evidence });
+    }
+    if (req.method === 'POST' && req.url === '/api/strategy/export') {
+      const { FEATURE_TASKS, exportHarborFeatureTask } = require('./src/strategy/feature_task_strategy');
+      const results = FEATURE_TASKS.map(task => exportHarborFeatureTask(task, path.join(dataDir, 'harbor-tasks')));
+      return send(res, 201, { exported: results });
+    }
     if (req.method === 'GET' && req.url === '/api/analytics/summary') {
       const valid = tasks.filter(t => t.validation.valid).length;
       return send(res, 200, { total: tasks.length, valid, harborExported: tasks.filter(t => t.harbor).length, categoryCounts: Object.fromEntries(['counting','spatial','attribute','multi_object'].map(c => [c, tasks.filter(t => t.category === c).length])) });
@@ -62,4 +76,5 @@ const server = http.createServer(async (req, res) => {
     send(res, 404, { error: 'Not found' });
   } catch (error) { send(res, 400, { error: error.message }); }
 });
-server.listen(process.env.PORT || 3000, '0.0.0.0', () => console.log('VisionForge running at http://localhost:3000'));
+server.listen(process.env.PORT || 3000, '0.0.0.0', () => console.log(`VisionForge running at http://localhost:${process.env.PORT || 3000}`));
+module.exports = { server };

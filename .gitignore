@@ -1,3 +1,10 @@
 node_modules/
-data/harbor-tasks/
-data/exports/
+logs/
+# Harbor run outputs
+**/data/harbor-tasks/**/logs/
+jobs/
+*.log
+*.tmp
+# OS files
+Thumbs.db
+.DS_Store

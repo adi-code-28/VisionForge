@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>VisionForge • Harbor AI Coding Benchmark Generator</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main>
+    <header>
+      <div>
+        <p class="eyebrow">HARBOR BENCHMARK TASK GENERATION PLATFORM</p>
+        <h1>VisionForge <span>⚓ Harbor Task Interface</span></h1>
+        <p class="sub">Reusable strategy for generating realistic software feature-development tasks to evaluate AI coding systems, featuring starting version tracking, isolated verification, and regression protection.</p>
+      </div>
+      <div class="header-actions">
+        <button id="exportAllHarbor" class="secondary">⚓ Export Harbor Tasks</button>
+      </div>
+    </header>
+
+    <!-- Benchmark Mode Navigation Tabs -->
+    <nav class="nav-tabs">
+      <button class="nav-tab active" data-tab="features">🛠 AI Coding Feature Tasks (Harbor)</button>
+      <button class="nav-tab" data-tab="matrix">📊 Validation Evidence Matrix (4 States)</button>
+      <button class="nav-tab" data-tab="visual">👁 Legacy Visual QA Tasks</button>
+    </nav>
+
+    <!-- Metrics Bar -->
+    <section class="metrics" id="metrics">
+      <article><b>3</b><span>Feature Coding Tasks</span></article>
+      <article><b>v0.1.0 (fa51f3e)</b><span>Base Repo Version</span></article>
+      <article><b>100% (4/4 States)</b><span>Evidence Pass Rate</span></article>
+      <article><b>Dual Verifier</b><span>Regression + Feature</span></article>
+    </section>
+
+    <!-- Tab 1: AI Coding Feature Tasks -->
+    <div id="tab-features" class="tab-pane active">
+      <section class="workspace">
+        <aside>
+          <div class="section-title">SOFTWARE FEATURE TASKS <span id="featureCount">3</span></div>
+          <div id="featureList" class="task-list"></div>
+        </aside>
+        <article class="detail" id="featureDetail">
+          <div class="empty large">Select a feature task to inspect its specification, reference solution, and Harbor test suite.</div>
+        </article>
+      </section>
+    </div>
+
+    <!-- Tab 2: Validation Evidence Matrix -->
+    <div id="tab-matrix" class="tab-pane">
+      <section class="matrix-card">
+        <div class="matrix-header">
+          <div>
+            <h2>Empirical Validation Evidence Matrix</h2>
+            <p>Verification that feature tests detect missing behavior (Baseline), detect incorrect behavior (Flawed), and regression tests protect existing functionality (Breaking).</p>
+          </div>
+          <span class="badge success" id="matrixTimestamp">Verified State</span>
+        </div>
+        <div class="table-responsive">
+          <table class="evidence-table">
+            <thead>
+              <tr>
+                <th>Task ID</th>
+                <th>Target Feature</th>
+                <th>State 1: Baseline<br><small>Missing Code</small></th>
+                <th>State 2: Flawed<br><small>Incorrect Code</small></th>
+                <th>State 3: Breaking<br><small>Regression Catch</small></th>
+                <th>State 4: Reference<br><small>All Pass</small></th>
+                <th>Harbor Reward</th>
+              </tr>
+            </thead>
+            <tbody id="matrixTableBody">
+              <tr><td colspan="7" class="loading">Loading evidence matrix...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+
+    <!-- Tab 3: Visual QA Benchmark (Legacy Codex Prototype) -->
+    <div id="tab-visual" class="tab-pane">
+      <section class="controls">
+        <label>Tasks <input id="count" type="number" min="1" max="50" value="8"></label>
+        <label>Seed <input id="seed" type="number" value="42"></label>
+        <label>Difficulty
+          <select id="difficulty">
+            <option>easy</option>
+            <option selected>medium</option>
+            <option>hard</option>
+          </select>
+        </label>
+        <label>Reasoning
+          <select id="category">
+            <option value="all">Balanced suite</option>
+            <option value="counting">Counting</option>
+            <option value="spatial">Spatial</option>
+            <option value="attribute">Attribute</option>
+            <option value="multi_object">Multi-object</option>
+          </select>
+        </label>
+        <button id="generate" class="secondary">Generate visual tasks</button>
+      </section>
+
+      <section class="workspace">
+        <aside>
+          <div class="section-title">VISUAL BENCHMARK TASKS <span id="taskCount"></span></div>
+          <div id="taskList" class="task-list"><div class="empty">Generate a benchmark to begin.</div></div>
+        </aside>
+        <article class="detail" id="detail">
+          <div class="empty large">Select a task to inspect its visual evidence and independently computed answer.</div>
+        </article>
+      </section>
+    </div>
+
+  </main>
+
+  <template id="taskTemplate">
+    <button class="task-row">
+      <span class="pill"></span>
+      <strong></strong>
+      <small></small>
+    </button>
+  </template>
+
+  <script src="/app.js"></script>
+</body>
+</html>

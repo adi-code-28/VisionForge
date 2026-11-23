@@ -1,0 +1,25 @@
+schema_version = "1.0"
+
+[task]
+name = "visionforge/api-query-filtering-pagination"
+keywords = ["coding", "software-engineering", "node", "feature-development", "api_backend"]
+
+[metadata]
+difficulty = "medium"
+category = "api_backend"
+starting_version = "v0.1.0"
+base_commit = "fa51f3e"
+title = "API Query Filtering and Pagination for Task Listing"
+
+[verifier]
+timeout_sec = 60.0
+environment_mode = "shared"
+
+[agent]
+timeout_sec = 300.0
+
+[environment]
+build_timeout_sec = 300.0
+cpus = 2
+memory = "2G"
+workdir = "/app"
